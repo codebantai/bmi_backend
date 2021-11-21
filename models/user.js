@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         },
     });
     User.associate = ({ UserDetails }) => {
-        User.hasMany(UserDetails)
+        User.hasMany(UserDetails, { foreignKey: 'user_id' })
     }
 
     return User;

@@ -30,19 +30,16 @@ app.set("json spaces", 4);
 app.get("/", (req, res) => {
     res.render("./index.html");
 });
-app.get("/create", async (req, res) => {
-    console.log(CreateUser, '====')
-    const resp = await CreateUser("Vk");
+app.post("/check-bmi", async (req, res) => {
+    const { name, height, weight } = req.body;
+    const resp = await CreateUser(name, height, weight);
     res.status(200).json(resp);
 });
 
 app.get("/getall", async (req, res) => {
-
     const resp = await GetAllUsers();
     res.status(200).json(resp);
 });
-
-
 
 app.use((req, res, next) => {
     res.status(404).json({ message: "NOT FOUND" });

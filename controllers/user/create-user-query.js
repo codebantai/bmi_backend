@@ -1,18 +1,23 @@
-const { User } = require('../../models')
-const CreateUser = async (name) => {
+const { User, UserDetails } = require('../../models');
+const calculateBodyMassIndex = require('../utils/calculateBMI');
+const CreateUser = async (name, height, weight) => {
     const user = await User.findOrCreate({
         where: {
             name: name
         },
-        name: name
-    })
-    // console.log(user)
-    // const detail = await user[0].addUserDetails({
-    //     height: 1,
-    //     weight: 3,
-    //     bmi: 1.2,
-    //     user_id: user[0].id
-    // })
+        defaults: {
+            name: name
+        }
+    }).catch(err => console.log(err));
+    const { bmi, status, message } = calculateBodyMassIndex(height, weight)
+    await UserDetails.create({
+        height: height,
+        weight,
+        bmi,
+        status,
+        message,
+        user_id: user[0].id
+    }).catch(err => console.log(err));
     return user
 }
 module.exports = CreateUser
