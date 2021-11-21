@@ -10,7 +10,7 @@ const CreateUser = async (name, height, weight) => {
         }
     }).catch(err => console.log(err));
     const { bmi, status, message } = calculateBodyMassIndex(height, weight)
-    await UserDetails.create({
+    const details = await UserDetails.create({
         height: height,
         weight,
         bmi,
@@ -18,6 +18,6 @@ const CreateUser = async (name, height, weight) => {
         message,
         user_id: user[0].id
     }).catch(err => console.log(err));
-    return user
+    return { user, details }
 }
 module.exports = CreateUser
