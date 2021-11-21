@@ -7,15 +7,20 @@
 .header {
     height: 12vh;
     background-color: aqua;
-}
-
-.center {
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.center {
+    margin: auto;
+    
+}
+
 .body {
     width: 100%;
+}
+
+.submit {
+    margin: 20px;
 }

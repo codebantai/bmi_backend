@@ -7,7 +7,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -20,21 +19,11 @@
         <h3 class="display-4 center">Body Mass Index Calculator</h1>
     </header>
     <div class="body">
-        <div class="input-group flex-nowrap ">
-            <span class="input-group-text" id="addon-wrapping"></span>
-            </div>
-            <input type="text" class="form-control input-box" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-        </div>
-        <div class="input-group flex-nowrap ">
-            <span class="input-group-text" id="addon-wrapping"></span>
-            </div>
-            <input type="text" class="form-control input-box" placeholder="Height" aria-label="Username" aria-describedby="addon-wrapping">
-        </div>
-        <div class="input-group flex-nowrap ">
-            <span class="input-group-text" id="addon-wrapping"></span>
-            </div>
-            <input type="text" class="form-control input-box" placeholder="Weight" aria-label="Username" aria-describedby="addon-wrapping">
-        </div>
+        <input type="text" class="form-control input-box" id="username" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required>
+        <input type="number" class="form-control input-box" id="height" placeholder="Height in meters" aria-label="Username" aria-describedby="addon-wrapping" required>
+        <input type="number" class="form-control input-box" id="weight" placeholder="Weight in kilograms" aria-label="Username" aria-describedby="addon-wrapping" required>
+        <button type="submit" class="btn btn-primary submit" id="submit">Submit</button>
     </div>
 </body>
+<script src="./index.js"></script>
 </html>
