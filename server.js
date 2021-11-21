@@ -30,6 +30,7 @@ app.set("json spaces", 4);
 app.get("/", (req, res) => {
     res.render("./index.html");
 });
+
 app.post("/check-bmi", async (req, res) => {
     const { name, height, weight } = req.body;
     const resp = await CreateUser(name, height, weight);
