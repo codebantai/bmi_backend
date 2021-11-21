@@ -1,4 +1,5 @@
-const { User, UserDetails } = require('../../models')
+const { User, UserDetails } = require('../../models');
+const calculateBodyMassIndex = require('../utils/calculateBMI');
 const CreateUser = async (name, height, weight) => {
     const user = await User.findOrCreate({
         where: {
@@ -8,11 +9,13 @@ const CreateUser = async (name, height, weight) => {
             name: name
         }
     }).catch(err => console.log(err));
-
+    const { bmi, status, message } = calculateBodyMassIndex(height, weight)
     await UserDetails.create({
         height: height,
-        weight: weight,
-        bmi: 1,
+        weight,
+        bmi,
+        status,
+        message,
         user_id: user[0].id
     }).catch(err => console.log(err));
     return user
