@@ -6,8 +6,8 @@ module.exports = {
 
     // port: process.env.PORT || 5000,
     "development": {
-        username: "root",
-        password: "root",
+        username: "jarvis",
+        password: "Proc#ydr@",
         database: "sequelize_database_dev",
         host: process.env.DB_HOST,
         dialect: "postgres",
