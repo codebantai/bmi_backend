@@ -12,9 +12,7 @@ fetch('/getall')
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     allUsersData = data;
-    let tableChild = '';
     let users = '<option selected>choose</option>';
     data.forEach(item => {
       users += `<option value=${item.id}>${item.name}</option>`
@@ -38,12 +36,9 @@ function dateTimeFormatter(date) {
   return `${dateFormatter(date)} at ${[10, 11, 12].includes(displayHours) ? displayHours : ('0' + displayHours)}:${minutes} ${(hours >= 12 ? ' PM' : ' AM')}`;
 }
 
-getUserDetails = () => {
+const getUserDetails = () => {
   let tableChild = '';
-  console.log(allUsersData, 'allUsersData')
-  console.log(select.value)
   const res = allUsersData.find(item => item.id === +select.value);
-  console.log(res)
   res.UserDetails.forEach((record, index) => {
     tableChild += `<tr>
             <th scope="row">${index + 1}</th>
@@ -57,7 +52,7 @@ getUserDetails = () => {
           </tr>`
   })
   tableBody.innerHTML = tableChild;
-  const sortedData = res.UserDetails.sort((a, b) => a.bmi > b.bmi)
+  const sortedData = res.UserDetails.sort((a, b) => b.bmi - a.bmi);
   const allTimeHighBmiText = `bmi : ${sortedData[0].bmi}`
   const allTimeHighWeightText = `weight : ${sortedData[0].weight}`
   const allTimeLowWeightText = `weight : ${sortedData[sortedData.length - 1].weight}`
