@@ -49,6 +49,7 @@ getUserDetails = () => {
             <th scope="row">${index + 1}</th>
             <td>${res.name}</td>
             <td>${record.weight}</td>
+            <td>${record.height}</td>
             <td>${record.bmi.toFixed(2)}</td>
             <td>${record.status}</td>
             <td>${dateTimeFormatter(record.createdAt)}</td>
@@ -56,7 +57,7 @@ getUserDetails = () => {
           </tr>`
   })
   tableBody.innerHTML = tableChild;
-  const sortedData = res.UserDetails.sort((a, b) => a > b)
+  const sortedData = res.UserDetails.sort((a, b) => a.bmi > b.bmi)
   const allTimeHighBmiText = `bmi : ${sortedData[0].bmi}`
   const allTimeHighWeightText = `weight : ${sortedData[0].weight}`
   const allTimeLowWeightText = `weight : ${sortedData[sortedData.length - 1].weight}`
