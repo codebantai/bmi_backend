@@ -14,5 +14,11 @@ module.exports = {
         database: "d1f4i6kkdufvhr",
         host: 'ec2-3-210-12-0.compute-1.amazonaws.com',
         dialect: "postgres",
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
     }
 };
