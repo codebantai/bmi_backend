@@ -55,6 +55,6 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: "TRY AGAIN LATER" });
 });
 
-app.listen(3000, () => {
-    console.log(`Sever listening at ${3000}`);
+app.listen(process.env.PORT || 5000, () => {
+    console.log(`Sever listening at ${process.env.PORT}`);
 });
