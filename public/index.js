@@ -1,4 +1,5 @@
 const submitButtom = document.querySelector('#submit');
+const result = document.getElementById('result')
 
 async function postData(url = '', data = {}) {
     // Default options are marked with *
@@ -20,16 +21,21 @@ async function postData(url = '', data = {}) {
 
 console.log(document.getElementById('username'))
 const postBMIdata = async () => {
+
     const username = document.getElementById('username').value;
 const weight = document.getElementById('weight').value;
 const height = document.getElementById('height').value;
     console.log('111111111111111111')
-    if (typeof weight !== 'number') {
+    // if (typeof weight !== 'number' || typeof height !== 'number') {
 
-    }
+    // }
+    result.innerHTML = "";
     const response = await postData('/check-bmi', {name: username, height, weight})
-    console.log(response)
-    console.log(username, weight)
+    console.log(response.details)
+    const x = document.createElement("P");                        // Create a <p> node
+    const t = document.createTextNode(response.details.message);
+    x.appendChild(t);
+    result.appendChild(x)
 }
 
 submitButtom.addEventListener('click', () =>  postBMIdata())
