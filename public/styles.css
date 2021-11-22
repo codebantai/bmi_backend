@@ -24,3 +24,17 @@
 .submit {
     margin: 20px;
 }
+
+.main-metrics {
+    padding: 10px; 
+    /* margin: 10px; */
+}
+
+#userId {
+    width: 80%;
+    margin: 10px;
+}
+
+#result {
+    margin: 20px;
+}

@@ -1,4 +1,5 @@
 const submitButtom = document.querySelector('#submit');
+const result = document.getElementById('result')
 
 async function postData(url = '', data = {}) {
     // Default options are marked with *
@@ -18,18 +19,25 @@ async function postData(url = '', data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-console.log(document.getElementById('username'))
 const postBMIdata = async () => {
-    const username = document.getElementById('username').value;
-const weight = document.getElementById('weight').value;
-const height = document.getElementById('height').value;
-    console.log('111111111111111111')
-    if (typeof weight !== 'number') {
 
-    }
+    const username = document.getElementById('username').value;
+    const weight = document.getElementById('weight').value;
+    const height = document.getElementById('height').value;
+        result.innerHTML = "";
     const response = await postData('/check-bmi', {name: username, height, weight})
-    console.log(response)
-    console.log(username, weight)
+    console.log(response.details)
+    const x = document.createElement("P");  
+    const y = document.createElement("P");  
+    x.setAttribute('id', 'result');
+    y.setAttribute('id', 'result');
+    const bmi = document.createTextNode(`BMI : ${response.details.bmi}`);
+    const t = document.createTextNode(response.details.message);
+
+    y.appendChild(bmi);
+    x.appendChild(t);
+    result.appendChild(y)
+    result.appendChild(x)
 }
 
 submitButtom.addEventListener('click', () =>  postBMIdata())

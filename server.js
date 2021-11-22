@@ -6,7 +6,7 @@ const cors = require("cors");
 const db = require("./models");
 const CreateUser = require("./controllers/user/create-user-query");
 const GetAllUsers = require("./controllers/user/get-user-query");
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
     console.log("Drop and re-sync db.");
 });
 app.use(cors());
@@ -29,6 +29,10 @@ app.set("json spaces", 4);
 
 app.get("/", (req, res) => {
     res.render("./index.html");
+});
+
+app.get("/admin", (req, res) => {
+    res.render("./admin.html");
 });
 
 app.post("/check-bmi", async (req, res) => {
