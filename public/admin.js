@@ -1,5 +1,4 @@
 
-console.log('11111111111111111111111111111111')
 const tableBody = document.getElementById('table-body')
 const select = document.getElementById('userId')
 const allTimeHighWeight = document.getElementById('high-weight')
@@ -16,7 +15,7 @@ fetch('/getall')
     console.log(data);
     allUsersData = data;
     let tableChild = '';
-    let users = '<option>choose</option>';
+    let users = '<option selected>choose</option>';
     data.forEach(item => {
       users += `<option value=${item.id}>${item.name}</option>`
       select.innerHTML = users;
@@ -51,6 +50,7 @@ getUserDetails = () => {
             <td>${res.name}</td>
             <td>${record.weight}</td>
             <td>${record.bmi.toFixed(2)}</td>
+            <td>${record.status}</td>
             <td>${dateTimeFormatter(record.createdAt)}</td>
             <td>${record.message}</td>
           </tr>`
