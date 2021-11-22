@@ -19,22 +19,24 @@ async function postData(url = '', data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-console.log(document.getElementById('username'))
 const postBMIdata = async () => {
 
     const username = document.getElementById('username').value;
-const weight = document.getElementById('weight').value;
-const height = document.getElementById('height').value;
-    console.log('111111111111111111')
-    // if (typeof weight !== 'number' || typeof height !== 'number') {
-
-    // }
-    result.innerHTML = "";
+    const weight = document.getElementById('weight').value;
+    const height = document.getElementById('height').value;
+        result.innerHTML = "";
     const response = await postData('/check-bmi', {name: username, height, weight})
     console.log(response.details)
-    const x = document.createElement("P");                        // Create a <p> node
+    const x = document.createElement("P");  
+    const y = document.createElement("P");  
+    x.setAttribute('id', 'result');
+    y.setAttribute('id', 'result');
+    const bmi = document.createTextNode(`BMI : ${response.details.bmi}`);
     const t = document.createTextNode(response.details.message);
+
+    y.appendChild(bmi);
     x.appendChild(t);
+    result.appendChild(y)
     result.appendChild(x)
 }
 
