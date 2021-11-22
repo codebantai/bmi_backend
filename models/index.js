@@ -1,4 +1,5 @@
-const config = require("../config/config")["development"];
+let config = require("../config/config")
+config = process.env.NODE_ENV === 'production' ? config["production"] : config["development"];
 const Sequelize = require("sequelize");
 const fs = require("fs");
 const path = require("path");
